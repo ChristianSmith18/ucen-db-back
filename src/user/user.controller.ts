@@ -11,11 +11,16 @@ import {
 import { UserService } from './user.service';
 import { Response } from 'express';
 import { CreateUserDto } from './dto/user.dto';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Usuario')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiOperation({ summary: 'Muestra todos los usuarios creados.' })
+  @ApiResponse({ status: 200, description: 'OK.' })
+  @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Get()
   async getAllUser(@Res() response: Response) {
     try {
@@ -26,6 +31,9 @@ export class UserController {
     }
   }
 
+  @ApiOperation({ summary: 'Crea un usuario.' })
+  @ApiResponse({ status: 200, description: 'OK.' })
+  @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Post()
   async createUser(@Body() body: CreateUserDto, @Res() response: Response) {
     try {
@@ -36,6 +44,9 @@ export class UserController {
     }
   }
 
+  @ApiOperation({ summary: 'Actualiza un usuario a través del ID.' })
+  @ApiResponse({ status: 200, description: 'OK.' })
+  @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Put()
   async updateUser(
     @Query('id') id: string,
@@ -50,6 +61,9 @@ export class UserController {
     }
   }
 
+  @ApiOperation({ summary: 'Eliminar un usuario a través del ID.' })
+  @ApiResponse({ status: 200, description: 'OK.' })
+  @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Delete()
   async deleteUser(@Query('id') id: string, @Res() response: Response) {
     try {
