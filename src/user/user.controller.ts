@@ -32,13 +32,13 @@ export class UserController {
   }
 
   @ApiOperation({ summary: 'Crea un usuario.' })
-  @ApiResponse({ status: 200, description: 'OK.' })
+  @ApiResponse({ status: 201, description: 'CREATED.' })
   @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Post()
   async createUser(@Body() body: CreateUserDto, @Res() response: Response) {
     try {
       const user = await this.userService.createUser(body);
-      return response.status(200).json({ ok: true, user });
+      return response.status(201).json({ ok: true, user });
     } catch (error) {
       return response.status(400).json({ ok: false, error });
     }
