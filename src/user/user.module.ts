@@ -1,22 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UserController } from './user.controller';
-import { UserService } from './user.service';
-import { User, UserSchema } from './schemas/user.schema';
-
-// Mongodb
-import { MongooseModule } from '@nestjs/mongoose';
-
-// Env var
-import { config } from 'dotenv';
-
-config();
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConfigurations } from 'src/configs/orm.config';
 
 @Module({
-  imports: [
-    MongooseModule.forRoot(process.env.DB_URI),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
-  ],
-  controllers: [UserController],
-  providers: [UserService],
+  imports: [TypeOrmModule.forRoot(typeOrmConfigurations)],
+  // controllers: [UserController],
+  // providers: [UserService],
 })
 export class UserModule {}
