@@ -55,13 +55,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/UserModule.html" data-type="entity-link">UserModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' : 'data-target="#xs-controllers-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' }>
+                                            'data-target="#controllers-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' : 'data-target="#xs-controllers-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' :
-                                            'id="xs-controllers-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' :
+                                            'id="xs-controllers-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' }>
                                             <li class="link">
                                                 <a href="controllers/UserController.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">UserController</a>
@@ -70,13 +70,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' : 'data-target="#xs-injectables-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' }>
+                                        'data-target="#injectables-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' : 'data-target="#xs-injectables-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' :
-                                        'id="xs-injectables-links-module-UserModule-53729f06f55dfc52ad349e1fc494c941"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' :
+                                        'id="xs-injectables-links-module-UserModule-e77a7fcf9046cdf0aa4870d70601dbd5"' }>
                                         <li class="link">
                                             <a href="injectables/UserService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>UserService</a>

@@ -152,22 +152,16 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
+import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
+import { typeOrmConfigurations } from &#x27;src/configs/orm.config&#x27;;
+import { User } from &#x27;./entities/user.entity&#x27;;
 import { UserController } from &#x27;./user.controller&#x27;;
 import { UserService } from &#x27;./user.service&#x27;;
-import { User, UserSchema } from &#x27;./schemas/user.schema&#x27;;
-
-// Mongodb
-import { MongooseModule } from &#x27;@nestjs/mongoose&#x27;;
-
-// Env var
-import { config } from &#x27;dotenv&#x27;;
-
-config();
 
 @Module({
   imports: [
-    MongooseModule.forRoot(process.env.DB_URI),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    TypeOrmModule.forRoot(typeOrmConfigurations),
+    TypeOrmModule.forFeature([User]),
   ],
   controllers: [UserController],
   providers: [UserService],

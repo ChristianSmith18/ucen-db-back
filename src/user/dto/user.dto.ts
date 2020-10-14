@@ -3,6 +3,14 @@ import { IsNumber, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDto {
   @ApiProperty({
+    description: 'Rut identificador del usuario.',
+    type: Number,
+    required: true,
+  })
+  @IsNumber({}, { message: 'El campo <rut> debe ser número.' })
+  readonly rut: number;
+
+  @ApiProperty({
     description: 'Nombre del usuario.',
     minLength: 3,
     type: String,
@@ -12,7 +20,7 @@ export class CreateUserDto {
     message: 'El campo <name> debe contener al menos 3 caracteres.',
   })
   @IsString({ message: 'El campo <name> debe ser string.' })
-  readonly name: string;
+  readonly firstname: string;
 
   @ApiProperty({
     description: 'Apellido del usuario.',

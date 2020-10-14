@@ -109,7 +109,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userModel: <a href="../classes/User.html">Model<User></a>)</code>
+<code>constructor(userRepository: <a href="../classes/User.html">Repository<User></a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -132,10 +132,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>userModel</td>
+                                                        <td>userRepository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../classes/User.html" target="_self" >Model&lt;User&gt;</a></code>
+                                                                        <code><a href="../classes/User.html" target="_self" >Repository&lt;User&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -181,8 +181,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/user/user.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">src/user/user.service.ts:17</a></div>
                 </td>
             </tr>
 
@@ -253,8 +253,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/user/user.service.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/user/user.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -291,7 +291,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/User.html" target="_self" >Promise&lt;User&gt;</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;any&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -325,8 +325,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">src/user/user.service.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/user/user.service.ts:13</a></div>
                 </td>
             </tr>
 
@@ -359,15 +359,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateUser(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, createUserDto: <a href="../classes/CreateUserDto.html">CreateUserDto</a>)</code>
+                    <code>updateUser(createUserDto: <a href="../classes/CreateUserDto.html">CreateUserDto</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/user/user.service.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="28"
+                            class="link-to-prism">src/user/user.service.ts:28</a></div>
                 </td>
             </tr>
 
@@ -386,18 +386,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
                                 <tr>
                                     <td>createUserDto</td>
                                     <td>
@@ -433,33 +421,41 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
-import { InjectModel } from &#x27;@nestjs/mongoose&#x27;;
-import { Model } from &#x27;mongoose&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
 import { CreateUserDto } from &#x27;./dto/user.dto&#x27;;
-import { User } from &#x27;./schemas/user.schema&#x27;;
+import { User } from &#x27;./entities/user.entity&#x27;;
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userModel: Model&lt;User&gt;) {}
+  constructor(
+    @InjectRepository(User) private userRepository: Repository&lt;User&gt;,
+  ) {}
 
   async getAllUser(): Promise&lt;User[]&gt; {
-    return await this.userModel.find().exec();
+    return await this.userRepository.find();
   }
 
   async createUser(createUserDto: CreateUserDto): Promise&lt;User&gt; {
-    const newUser &#x3D; new this.userModel(createUserDto);
-    return await newUser.save();
+    if ((await this.userRepository.findOne(createUserDto.rut)) &#x3D;&#x3D;&#x3D; undefined) {
+      let user &#x3D; new User();
+      user &#x3D; { ...createUserDto };
+
+      return await this.userRepository.save(user);
+    }
+
+    throw new Error();
   }
 
-  async updateUser(id: string, createUserDto: CreateUserDto): Promise&lt;User&gt; {
-    const updatedUser &#x3D; await this.userModel
-      .findByIdAndUpdate(id, createUserDto, { new: true })
-      .exec();
-    return await updatedUser.save();
+  async updateUser(createUserDto: CreateUserDto): Promise&lt;User&gt; {
+    let user &#x3D; new User();
+    user &#x3D; { ...createUserDto };
+
+    return await this.userRepository.save(user);
   }
 
-  async deleteUser(id: string): Promise&lt;User&gt; {
-    return await this.userModel.findByIdAndDelete(id).exec();
+  async deleteUser(id: string): Promise&lt;any&gt; {
+    return await this.userRepository.delete(id);
   }
 }
 </code></pre>

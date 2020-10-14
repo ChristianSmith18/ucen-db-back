@@ -48,13 +48,9 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'OK.' })
   @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Put()
-  async updateUser(
-    @Query('id') id: string,
-    @Body() body: CreateUserDto,
-    @Res() response: Response,
-  ) {
+  async updateUser(@Body() body: CreateUserDto, @Res() response: Response) {
     try {
-      const user = await this.userService.updateUser(id, body);
+      const user = await this.userService.updateUser(body);
       return response.status(200).json({ ok: true, user });
     } catch (error) {
       return response.status(400).json({ ok: false, error });

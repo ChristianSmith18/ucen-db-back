@@ -81,15 +81,19 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Readonly</span>
+                                <a href="#firstname">firstname</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#lastname">lastname</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
-                                <a href="#name">name</a>
+                                <a href="#phonenumber">phonenumber</a>
                             </li>
                             <li>
                                     <span class="modifier">Readonly</span>
-                                <a href="#phonenumber">phonenumber</a>
+                                <a href="#rut">rut</a>
                             </li>
                         </ul>
                     </td>
@@ -110,6 +114,43 @@
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="firstname"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            firstname</b>
+                            <a href="#firstname"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiProperty({description: &#x27;Nombre del usuario.&#x27;, minLength: 3, type: String, required: true})<br />@MinLength(3, {message: &#x27;El campo &lt;name&gt; debe contener al menos 3 caracteres.&#x27;})<br />@IsString({message: &#x27;El campo &lt;name&gt; debe ser string.&#x27;})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/user/dto/user.dto.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -140,44 +181,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/user/dto/user.dto.ts:27</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="name"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Readonly</span>
-                            name</b>
-                            <a href="#name"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ApiProperty({description: &#x27;Nombre del usuario.&#x27;, minLength: 3, type: String, required: true})<br />@MinLength(3, {message: &#x27;El campo &lt;name&gt; debe contener al menos 3 caracteres.&#x27;})<br />@IsString({message: &#x27;El campo &lt;name&gt; debe ser string.&#x27;})<br />
-                            </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/user/dto/user.dto.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/user/dto/user.dto.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -214,7 +218,44 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/user/dto/user.dto.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/user/dto/user.dto.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="rut"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Readonly</span>
+                            rut</b>
+                            <a href="#rut"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiProperty({description: &#x27;Rut identificador del usuario.&#x27;, type: Number, required: true})<br />@IsNumber({}, {message: &#x27;El campo &lt;rut&gt; debe ser número.&#x27;})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/user/dto/user.dto.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -238,6 +279,14 @@ import { IsNumber, IsString, MinLength } from &#x27;class-validator&#x27;;
 
 export class CreateUserDto {
   @ApiProperty({
+    description: &#x27;Rut identificador del usuario.&#x27;,
+    type: Number,
+    required: true,
+  })
+  @IsNumber({}, { message: &#x27;El campo &lt;rut&gt; debe ser número.&#x27; })
+  readonly rut: number;
+
+  @ApiProperty({
     description: &#x27;Nombre del usuario.&#x27;,
     minLength: 3,
     type: String,
@@ -247,7 +296,7 @@ export class CreateUserDto {
     message: &#x27;El campo &lt;name&gt; debe contener al menos 3 caracteres.&#x27;,
   })
   @IsString({ message: &#x27;El campo &lt;name&gt; debe ser string.&#x27; })
-  readonly name: string;
+  readonly firstname: string;
 
   @ApiProperty({
     description: &#x27;Apellido del usuario.&#x27;,

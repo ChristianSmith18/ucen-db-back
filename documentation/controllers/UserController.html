@@ -236,8 +236,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">src/user/user.controller.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/user/user.controller.ts:64</a></div>
                 </td>
             </tr>
 
@@ -392,7 +392,7 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>updateUser(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, body: <a href="../classes/CreateUserDto.html">CreateUserDto</a>, response: Response)</code>
+                    <code>updateUser(body: <a href="../classes/CreateUserDto.html">CreateUserDto</a>, response: Response)</code>
                 </td>
             </tr>
 
@@ -426,18 +426,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>id</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
                                 <tr>
                                     <td>body</td>
                                     <td>
@@ -532,13 +520,9 @@ export class UserController {
   @ApiResponse({ status: 200, description: &#x27;OK.&#x27; })
   @ApiResponse({ status: 400, description: &#x27;BAD REQUEST.&#x27; })
   @Put()
-  async updateUser(
-    @Query(&#x27;id&#x27;) id: string,
-    @Body() body: CreateUserDto,
-    @Res() response: Response,
-  ) {
+  async updateUser(@Body() body: CreateUserDto, @Res() response: Response) {
     try {
-      const user &#x3D; await this.userService.updateUser(id, body);
+      const user &#x3D; await this.userService.updateUser(body);
       return response.status(200).json({ ok: true, user });
     } catch (error) {
       return response.status(400).json({ ok: false, error });

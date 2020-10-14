@@ -58,7 +58,7 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
-                            <a href="#UserSchema" title="src/user/schemas/user.schema.ts"><b>UserSchema</b>&nbsp;&nbsp;&nbsp;(src/.../user.schema.ts)</a>
+                            <a href="#typeOrmConfigurations" title="src/configs/orm.config.ts"><b>typeOrmConfigurations</b>&nbsp;&nbsp;&nbsp;(src/.../orm.config.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -67,23 +67,38 @@
     </table>
 </section>
 
-    <h3>src/user/schemas/user.schema.ts</h3>
+    <h3>src/configs/orm.config.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="UserSchema"></a>
+                        <a name="typeOrmConfigurations"></a>
                         <span class="name">
                             <b>
-                            UserSchema</b>
-                            <a href="#UserSchema"><span class="icon ion-ios-link"></span></a>
+                            typeOrmConfigurations</b>
+                            <a href="#typeOrmConfigurations"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>SchemaFactory.createForClass(User)</code>
+                            <i>Type : </i>    <code>TypeOrmModuleOptions</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  type: &#x27;postgres&#x27;,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  entities: [&#x27;dist/**/*.entity{.ts,.js}&#x27;],
+  synchronize: true,
+}</code>
                         </td>
                     </tr>
 
