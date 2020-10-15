@@ -8,11 +8,11 @@ export class CreateUserDto {
     required: true,
     example: 12345678,
   })
-  @Max(99999999, { message: 'El campo <rut> debe ser de máximo 8 caracteres.' })
+  @Max(99999999, { message: 'El campo "rut" debe ser de máximo 8 caracteres.' })
   @Min(1000000, {
-    message: 'El campo <rut> debe ser de al menos 7 caracteres.',
+    message: 'El campo "rut" debe ser de al menos 7 caracteres.',
   })
-  @IsNumber({}, { message: 'El campo <rut> debe ser número.' })
+  @IsNumber({}, { message: 'El campo "rut" debe ser número.' })
   readonly rut: number;
 
   @ApiProperty({
@@ -23,9 +23,9 @@ export class CreateUserDto {
     example: 'Juan',
   })
   @MinLength(3, {
-    message: 'El campo <name> debe contener al menos 3 caracteres.',
+    message: 'El campo "name" debe contener al menos 3 caracteres.',
   })
-  @IsString({ message: 'El campo <name> debe ser string.' })
+  @IsString({ message: 'El campo "name" debe ser string.' })
   readonly firstname: string;
 
   @ApiProperty({
@@ -36,9 +36,9 @@ export class CreateUserDto {
     example: 'Perez',
   })
   @MinLength(3, {
-    message: 'El campo <lastname> debe contener al menos 3 caracteres.',
+    message: 'El campo "lastname" debe contener al menos 3 caracteres.',
   })
-  @IsString({ message: 'El campo <lastname> debe ser string.' })
+  @IsString({ message: 'El campo "lastname" debe ser string.' })
   readonly lastname: string;
 
   @ApiProperty({
@@ -48,11 +48,11 @@ export class CreateUserDto {
     example: 87654321,
   })
   @Max(99999999, {
-    message: 'El campo <phonenumber> debe ser de máximo 8 caracteres.',
+    message: 'El campo "phonenumber" debe ser de máximo 8 caracteres.',
   })
   @Min(10000000, {
-    message: 'El campo <phonenumber> debe ser de al menos 8 caracteres.',
+    message: 'El campo "phonenumber" debe ser de al menos 8 caracteres.',
   })
-  @IsNumber({}, { message: 'El campo <phonenumber> debe ser número.' })
+  @IsNumber({}, { message: 'El campo "phonenumber" debe ser número.' })
   readonly phonenumber: number;
 }
