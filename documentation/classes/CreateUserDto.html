@@ -138,13 +138,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty({description: &#x27;Nombre del usuario.&#x27;, minLength: 3, type: String, required: true})<br />@MinLength(3, {message: &#x27;El campo &lt;name&gt; debe contener al menos 3 caracteres.&#x27;})<br />@IsString({message: &#x27;El campo &lt;name&gt; debe ser string.&#x27;})<br />
+                                @ApiProperty({description: &#x27;Nombre del usuario.&#x27;, minLength: 3, type: String, required: true, example: &#x27;Juan&#x27;})<br />@MinLength(3, {message: &#x27;El campo &quot;name&quot; debe contener al menos 3 caracteres.&#x27;})<br />@IsString({message: &#x27;El campo &quot;name&quot; debe ser string.&#x27;})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/user/dto/user.dto.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/user/dto/user.dto.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -175,13 +175,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty({description: &#x27;Apellido del usuario.&#x27;, minLength: 3, type: String, required: true})<br />@MinLength(3, {message: &#x27;El campo &lt;lastname&gt; debe contener al menos 3 caracteres.&#x27;})<br />@IsString({message: &#x27;El campo &lt;lastname&gt; debe ser string.&#x27;})<br />
+                                @ApiProperty({description: &#x27;Apellido del usuario.&#x27;, minLength: 3, type: String, required: true, example: &#x27;Perez&#x27;})<br />@MinLength(3, {message: &#x27;El campo &quot;lastname&quot; debe contener al menos 3 caracteres.&#x27;})<br />@IsString({message: &#x27;El campo &quot;lastname&quot; debe ser string.&#x27;})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/user/dto/user.dto.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/user/dto/user.dto.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -212,13 +212,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty({description: &#x27;Número del usuario.&#x27;, type: Number, required: true})<br />@IsNumber({}, {message: &#x27;El campo &lt;phonenumber&gt; debe ser número.&#x27;})<br />
+                                @ApiProperty({description: &#x27;Número del usuario.&#x27;, type: Number, required: true, example: 87654321})<br />@Max(99999999, {message: &#x27;El campo &quot;phonenumber&quot; debe ser de máximo 8 caracteres.&#x27;})<br />@Min(10000000, {message: &#x27;El campo &quot;phonenumber&quot; debe ser de al menos 8 caracteres.&#x27;})<br />@IsNumber({}, {message: &#x27;El campo &quot;phonenumber&quot; debe ser número.&#x27;})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/user/dto/user.dto.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/user/dto/user.dto.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -249,13 +249,13 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ApiProperty({description: &#x27;Rut identificador del usuario.&#x27;, type: Number, required: true})<br />@IsNumber({}, {message: &#x27;El campo &lt;rut&gt; debe ser número.&#x27;})<br />
+                                @ApiProperty({description: &#x27;Rut identificador del usuario.&#x27;, type: Number, required: true, example: 12345678})<br />@Max(99999999, {message: &#x27;El campo &quot;rut&quot; debe ser de máximo 8 caracteres.&#x27;})<br />@Min(1000000, {message: &#x27;El campo &quot;rut&quot; debe ser de al menos 7 caracteres.&#x27;})<br />@IsNumber({}, {message: &#x27;El campo &quot;rut&quot; debe ser número.&#x27;})<br />
                             </code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/user/dto/user.dto.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/user/dto/user.dto.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -275,15 +275,20 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
-import { IsNumber, IsString, MinLength } from &#x27;class-validator&#x27;;
+import { IsNumber, IsString, Max, Min, MinLength } from &#x27;class-validator&#x27;;
 
 export class CreateUserDto {
   @ApiProperty({
     description: &#x27;Rut identificador del usuario.&#x27;,
     type: Number,
     required: true,
+    example: 12345678,
   })
-  @IsNumber({}, { message: &#x27;El campo &lt;rut&gt; debe ser número.&#x27; })
+  @Max(99999999, { message: &#x27;El campo &quot;rut&quot; debe ser de máximo 8 caracteres.&#x27; })
+  @Min(1000000, {
+    message: &#x27;El campo &quot;rut&quot; debe ser de al menos 7 caracteres.&#x27;,
+  })
+  @IsNumber({}, { message: &#x27;El campo &quot;rut&quot; debe ser número.&#x27; })
   readonly rut: number;
 
   @ApiProperty({
@@ -291,11 +296,12 @@ export class CreateUserDto {
     minLength: 3,
     type: String,
     required: true,
+    example: &#x27;Juan&#x27;,
   })
   @MinLength(3, {
-    message: &#x27;El campo &lt;name&gt; debe contener al menos 3 caracteres.&#x27;,
+    message: &#x27;El campo &quot;name&quot; debe contener al menos 3 caracteres.&#x27;,
   })
-  @IsString({ message: &#x27;El campo &lt;name&gt; debe ser string.&#x27; })
+  @IsString({ message: &#x27;El campo &quot;name&quot; debe ser string.&#x27; })
   readonly firstname: string;
 
   @ApiProperty({
@@ -303,19 +309,27 @@ export class CreateUserDto {
     minLength: 3,
     type: String,
     required: true,
+    example: &#x27;Perez&#x27;,
   })
   @MinLength(3, {
-    message: &#x27;El campo &lt;lastname&gt; debe contener al menos 3 caracteres.&#x27;,
+    message: &#x27;El campo &quot;lastname&quot; debe contener al menos 3 caracteres.&#x27;,
   })
-  @IsString({ message: &#x27;El campo &lt;lastname&gt; debe ser string.&#x27; })
+  @IsString({ message: &#x27;El campo &quot;lastname&quot; debe ser string.&#x27; })
   readonly lastname: string;
 
   @ApiProperty({
     description: &#x27;Número del usuario.&#x27;,
     type: Number,
     required: true,
+    example: 87654321,
   })
-  @IsNumber({}, { message: &#x27;El campo &lt;phonenumber&gt; debe ser número.&#x27; })
+  @Max(99999999, {
+    message: &#x27;El campo &quot;phonenumber&quot; debe ser de máximo 8 caracteres.&#x27;,
+  })
+  @Min(10000000, {
+    message: &#x27;El campo &quot;phonenumber&quot; debe ser de al menos 8 caracteres.&#x27;,
+  })
+  @IsNumber({}, { message: &#x27;El campo &quot;phonenumber&quot; debe ser número.&#x27; })
   readonly phonenumber: number;
 }
 </code></pre>

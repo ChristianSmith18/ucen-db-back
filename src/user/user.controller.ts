@@ -18,7 +18,7 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @ApiOperation({ summary: 'Muestra todos los usuarios creados.' })
+  @ApiOperation({ summary: 'Muestra todos los usuarios creados [EDIT].' })
   @ApiResponse({ status: 200, description: 'OK.' })
   @ApiResponse({ status: 400, description: 'BAD REQUEST.' })
   @Get()
